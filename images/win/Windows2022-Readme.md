@@ -4,10 +4,10 @@
 ***
 # Microsoft Windows Server 2022 Datacenter
 - OS Version: 10.0.20348 Build 707
-- Image Version: 20220522.1
+- Image Version: 20220529.1
 
 ## Enabled windows optional features
-- Windows Subsystem for Linux [WSLv1]
+- Windows Subsystem for Linux [WSLv2]
 
 ## Installed Software
 ### Language and Runtime
