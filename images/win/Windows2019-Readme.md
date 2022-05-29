@@ -5,10 +5,10 @@
 ***
 # Microsoft Windows Server 2019 Datacenter
 - OS Version: 10.0.17763 Build 2928
-- Image Version: 20220522.1
+- Image Version: 20220529.1
 
 ## Enabled windows optional features
-- Windows Subsystem for Linux [WSLv1]
+- Windows Subsystem for Linux [WSLv2]
 
 ## Installed Software
 ### Language and Runtime
@@ -154,7 +154,7 @@
 ```
 Location: C:\msys64
 
-Note: MSYS2 is pre-installed on image but not added to PATH.
+Note: MSYS32 is pre-installed on image but not added to PATH.
 ```
 
 ### BizTalk Server
@@ -165,13 +165,13 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Version | Architecture | Environment Variable |
 | ------- | ------------ | -------------------- |
 | 1.16.15 | x64          | GOROOT_1_16_X64      |
-| 1.17.10 (Default) | x64          | GOROOT_1_17_X64      |
+| 1.17.10(Default)|x64.  | GOROOT_1_17_X64      |
 | 1.18.2  | x64          | GOROOT_1_18_X64      |
 
 #### Node
 | Version | Architecture |
 | ------- | ------------ |
-| 12.22.12 | x64          |
+| 12.22.12| x64          |
 | 14.19.3 | x64          |
 | 16.15.0 | x64          |
 
@@ -180,7 +180,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | ------- | ------------ |
 | 2.7.18  | x64, x86     |
 | 3.6.8   | x64, x86     |
-| 3.7.9 (Default) | x64, x86     |
+| 3.7.9(Default)|x64, x86|
 | 3.8.10  | x64, x86     |
 | 3.9.13  | x64, x86     |
 | 3.10.4  | x64, x86     |
@@ -189,7 +189,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | Version | Architecture |
 | ------- | ------------ |
 | 2.4.10  | x64          |
-| 2.5.9 (Default) | x64          |
+| 2.5.9(Default)| x64    |
 | 2.6.10  | x64          |
 | 2.7.6   | x64          |
 | 3.0.4   | x64          |
@@ -208,14 +208,14 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 #### PostgreSQL
 | Property             | Value                                                                                                                                |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| ServiceName          | postgresql-x64-14                                                                                                                    |
-| Version              | 14.3                                                                                                                                 |
-| ServiceStatus        | Stopped                                                                                                                              |
-| ServiceStartType     | Disabled                                                                                                                             |
-| EnvironmentVariables | PGBIN=C:\Program Files\PostgreSQL\14\bin <br> PGDATA=C:\Program Files\PostgreSQL\14\data <br> PGROOT=C:\Program Files\PostgreSQL\14  |
-| Path                 | C:\Program Files\PostgreSQL\14                                                                                                       |
-| UserName             | postgres                                                                                                                             |
-| Password             | root                                                                                                                                 |
+| ServiceName          | postgresql-x32-16                                                                                                                    |
+| Version              | 14.3                                                                                                                                  |
+| ServiceStatus        | Start                                                                                                                                |
+| ServiceStartType     | Enable                                                                                                                                |
+| EnvironmentVariables | PGBIN=C:\Program Files\PostgreSQL\14\bin <br> PGDATA=C:\Program Files\PostgreSQL\14\data <br> PGROOT=C:\Program Files\PostgreSQL\16  |
+| Path                 | C:\Program Files\PostgreSQL\16                                                                                                        |
+| UserName             | postgres                                                                                                                              |
+| Password             | root                                                                                                                                  |
 
 #### MongoDB
 | Version | ServiceName | ServiceStatus | ServiceStartType |
@@ -578,10 +578,10 @@ All other versions are saved but not installed.
 | Name                    | Value                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------- |
 | ANDROID_HOME            | C:\Android\android-sdk                                                       |
-| ANDROID_NDK_HOME        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.4.7075529 |
+| ANDROID_NDK_HOME        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.6.7075529 |
 | ANDROID_NDK_LATEST_HOME | C:\Android\android-sdk\ndk\23.1.7779620                                      |
-| ANDROID_NDK_PATH        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.4.7075529 |
-| ANDROID_NDK_ROOT        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.4.7075529 |
+| ANDROID_NDK_PATH        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.6.7075529 |
+| ANDROID_NDK_ROOT        | C:\Android\android-sdk\ndk-bundle -> C:\Android\android-sdk\ndk\21.6.7075529 |
 | ANDROID_SDK_ROOT        | C:\Android\android-sdk                                                       |
 
 ### Cached Docker images
