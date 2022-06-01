@@ -8,17 +8,17 @@ $global:ErrorView = "NormalView"
 Set-StrictMode -Version Latest
 
 Import-Module MarkdownPS
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Android.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Browsers.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.CachedTools.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Common.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Databases.psm1") -DisableNameChecking
-Import-Module "$PSScriptRoot/../helpers/SoftwareReport.Helpers.psm1" -DisableNameChecking
-Import-Module "$PSScriptRoot/../helpers/Common.Helpers.psm1" -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Java.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Rust.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Tools.psm1") -DisableNameChecking
-Import-Module (Join-Path $PSScriptRoot "SoftwareReport.WebServers.psm1") -DisableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Android.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Browsers.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.CachedTools.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Common.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Databases.psm1") -EnableNameChecking
+Import-Module "$PSScriptRoot/../helpers/SoftwareReport.Helpers.psm1" -EnableNameChecking
+Import-Module "$PSScriptRoot/../helpers/Common.Helpers.psm1" -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Java.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Rust.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.Tools.psm1") -EnableNameChecking
+Import-Module (Join-Path $PSScriptRoot "SoftwareReport.WebServers.psm1") -EnableNameChecking
 
 # Restore file owner in user profile
 Restore-UserOwner
@@ -29,7 +29,7 @@ $OSName = Get-OSName
 $markdown += New-MDHeader "$OSName" -Level 1
 
 $kernelVersion = Get-KernelVersion
-$markdown += New-MDList -Style Unordered -Lines @(
+$markdown += New-MDList -Style Unordered -Lines @v1(
     "$kernelVersion"
     "Image Version: $env:IMAGE_VERSION"
 )
@@ -37,7 +37,7 @@ $markdown += New-MDList -Style Unordered -Lines @(
 $markdown += New-MDHeader "Installed Software" -Level 2
 $markdown += New-MDHeader "Language and Runtime" -Level 3
 
-$runtimesList = @(
+$runtimesList = @v3(
     (Get-BashVersion),
     (Get-CPPVersions),
     (Get-FortranVersions),
@@ -54,7 +54,7 @@ $runtimesList = @(
 )
 
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $runtimesList += @(
+    $runtimesList += @v(
         (Get-MsbuildVersion),
         (Get-MonoVersion),
         (Get-ErlangVersion),
@@ -67,7 +67,7 @@ $markdown += New-MDList -Style Unordered -Lines ($runtimesList | Sort-Object)
 
 $markdown += New-MDHeader "Package Management" -Level 3
 
-$packageManagementList = @(
+$packageManagementList = @v3(
     (Get-HomebrewVersion),
     (Get-CpanVersion),
     (Get-GemVersion),
@@ -87,9 +87,9 @@ $markdown += Build-PackageManagementEnvironmentTable | New-MDTable
 $markdown += New-MDNewLine
 
 $markdown += New-MDHeader "Project Management" -Level 3
-$projectManagementList = @()
+$projectManagementList = @v3()
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $projectManagementList += @(
+    $projectManagementList += @v3(
         (Get-AntVersion),
         (Get-GradleVersion),
         (Get-MavenVersion),
@@ -98,14 +98,14 @@ if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
 }
 
 if ((Test-IsUbuntu20) -or (Test-IsUbuntu22)) {
-    $projectManagementList += @(
+    $projectManagementList += @v3(
         (Get-LernaVersion)
     )
 }
 $markdown += New-MDList -Style Unordered -Lines ($projectManagementList | Sort-Object)
 
 $markdown += New-MDHeader "Tools" -Level 3
-$toolsList = @(
+$toolsList = @v3(
     (Get-AnsibleVersion),
     (Get-AptFastVersion),
     (Get-AzCopyVersion),
@@ -153,7 +153,7 @@ $toolsList = @(
 )
 
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $toolsList += @(
+    $toolsList += @v3(
         (Get-PhantomJSVersion),
         (Get-HHVMVersion)
     )
@@ -166,7 +166,7 @@ if ((Test-IsUbuntu20) -or (Test-IsUbuntu22)) {
 $markdown += New-MDList -Style Unordered -Lines ($toolsList | Sort-Object)
 
 $markdown += New-MDHeader "CLI Tools" -Level 3
-$markdown += New-MDList -Style Unordered -Lines (@(
+$markdown += New-MDList -Style Unordered -Lines @v3(
     (Get-AlibabaCloudCliVersion),
     (Get-AWSCliVersion),
     (Get-AWSCliSessionManagerPluginVersion),
@@ -196,7 +196,7 @@ if ((Test-IsUbuntu20) -or (Test-IsUbuntu22)) {
 $markdown += Build-PHPSection
 
 $markdown += New-MDHeader "Haskell" -Level 3
-$markdown += New-MDList -Style Unordered -Lines (@(
+$markdown += New-MDList -Style Unordered -Lines @v3(
     (Get-GHCVersion),
     (Get-GHCupVersion),
     (Get-CabalVersion),
@@ -205,7 +205,7 @@ $markdown += New-MDList -Style Unordered -Lines (@(
 )
 
 $markdown += New-MDHeader "Rust Tools" -Level 3
-$markdown += New-MDList -Style Unordered -Lines (@(
+$markdown += New-MDList -Style Unordered -Lines @v3(
     (Get-RustVersion),
     (Get-RustupVersion),
     (Get-RustdocVersion),
@@ -214,7 +214,7 @@ $markdown += New-MDList -Style Unordered -Lines (@(
 )
 
 $markdown += New-MDHeader "Packages" -Level 4
-$markdown += New-MDList -Style Unordered -Lines (@(
+$markdown += New-MDList -Style Unordered -Lines @v4(
     (Get-BindgenVersion),
     (Get-CargoAuditVersion),
     (Get-CargoOutdatedVersion),
@@ -226,7 +226,7 @@ $markdown += New-MDList -Style Unordered -Lines (@(
 
 $markdown += New-MDHeader "Browsers and Drivers" -Level 3
 
-$browsersAndDriversList = @(
+$browsersAndDriversList = @v3(
     (Get-ChromeVersion),
     (Get-ChromeDriverVersion),
     (Get-ChromiumVersion),
@@ -234,7 +234,7 @@ $browsersAndDriversList = @(
 )
 
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $browsersAndDriversList += @(
+    $browsersAndDriversList += @v3(
         (Get-FirefoxVersion),
         (Get-GeckodriverVersion)
     )
@@ -246,7 +246,7 @@ $markdown += Build-BrowserWebdriversEnvironmentTable | New-MDTable
 $markdown += New-MDNewLine
 
 $markdown += New-MDHeader ".NET Core SDK" -Level 3
-$markdown += New-MDList -Style Unordered -Lines @(
+$markdown += New-MDList -Style Unordered -Lines @v3(
     (Get-DotNetCoreSdkVersions)
 )
 
@@ -260,7 +260,7 @@ $databaseLists = @(
 )
 
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
-    $databaseLists += @(
+    $databaseLists += @v3(
         (Get-MongoDbVersion)
     )
 }
@@ -288,7 +288,7 @@ $markdown += Get-PowerShellModules | New-MDTable
 $markdown += New-MDNewLine
 $markdown += New-MDHeader "Az PowerShell Modules" -Level 4
 $markdown += New-MDList -Style Unordered -Lines @(
-    (Get-AzModuleVersions)
+    (Get-az-moduleVersions)
 )
 
 $markdown += Build-WebServersSection
