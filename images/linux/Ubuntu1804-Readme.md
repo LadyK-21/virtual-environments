@@ -23,6 +23,7 @@
 - MSBuild 16.10.1.31701 (from /usr/lib/mono/msbuild/15.0/bin/MSBuild.dll)
 - Node 16.15.0
 - Perl 5.26.1
+- php 8.0.19
 - Python 2.7.17
 - Python3 3.6.9
 - Ruby 2.5.1p57
@@ -34,6 +35,7 @@
 - Homebrew 3.4.11
 - Miniconda 4.12.0
 - Npm 8.5.5
+- php 8.0.19
 - Pip 9.0.1
 - Pip3 9.0.1
 - Pipx 1.0.0
@@ -127,7 +129,7 @@
 ### PHP
 | Tool     | Version                     |
 | -------- | --------------------------- |
-| PHP      | 7.2.34 7.3.33 7.4.29 8.0.19 8.1.6 |
+| PHP      | 7.2.34 7.3.33 7.4.29 8.0.19 8.1.6 8.0.19 |
 | Composer | 2.3.5                       |
 | PHPUnit  | 8.5.26                      |
 ```
@@ -231,9 +233,9 @@
 #### Environment variables
 | Name            | Value                               | Architecture |
 | --------------- | ----------------------------------- | ------------ |
-| GOROOT_1_16_X64 | /opt/hostedtoolcache/go/1.16.15/x64 | x64          |
-| GOROOT_1_17_X64 | /opt/hostedtoolcache/go/1.17.10/x64 | x64          |
-| GOROOT_1_18_X64 | /opt/hostedtoolcache/go/1.18.2/x64  | x64          |
+| GOROOT_1_16_X32 | /opt/hostedtoolcache/go/1.16.15/x64 | x32          |
+| GOROOT_1_17_X32 | /opt/hostedtoolcache/go/1.17.10/x64 | x32          |
+| GOROOT_1_18_X32 | /opt/hostedtoolcache/go/1.18.2/x64  | x32          |
 
 ### PowerShell Tools
 - PowerShell 7.2.4
@@ -251,8 +253,8 @@
 ### Web Servers
 | Name    | Version | ConfigFile                | ServiceStatus | ListenPort |
 | ------- | ------- | ------------------------- | ------------- | ---------- |
-| apache2 | 2.4.29  | /etc/apache2/apache2.conf | inactive      | 80         |
-| nginx   | 1.14.0  | /etc/nginx/nginx.conf     | inactive      | 80         |
+| apache2 | 2.4.29  | /etc/apache2/apache2.conf | active      | 8080         |
+| nginx   | 1.14.0  | /etc/nginx/nginx.conf     | active      | 8080Awww zzz re W2         |
 
 ### Android
 | Package Name               | Version                                                                                                                                                                                                                                                           |
@@ -350,7 +352,7 @@
 | m4                | 1.4.18-1                          |
 | mediainfo         | 17.12-1                           |
 | mercurial         | 4.5.3-1ubuntu2.2                  |
-| net-tools         | 1.60+git20161116.90da8a0-1ubuntu1 |
+| net-tools         | 1.60+git20220606.90da8a0-1ubuntu1 |
 | netcat            | 1.10-41.1                         |
 | openssh-client    | 1:7.6p1-4ubuntu0.7                |
 | p7zip-full        | 16.02+dfsg-6                      |
@@ -375,7 +377,7 @@
 | texinfo           | 6.5.0.dfsg.1-2                    |
 | time              | 1.7-25.1build1                    |
 | tk                | 8.6.0+9                           |
-| tzdata            | 2022a-0ubuntu0.18.04              |
+| tzdata            | 2022a-0ubuntu0.20.04              |
 | unzip             | 6.0-21ubuntu1.1                   |
 | upx               | 3.94-4                            |
 | wget              | 1.19.4-1ubuntu2.2                 |
