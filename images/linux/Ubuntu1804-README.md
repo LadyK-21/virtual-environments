@@ -1,6 +1,5 @@
 | Announcements |
 |-|
-| [Ubuntu 16.04 environment will be removed on September 20, 2021](https://github.com/actions/virtual-environments/issues/3287) |
 ***
 # Ubuntu 18.04.5 LTS
 - Linux kernel version: 5.4.0-1055-azure
@@ -120,9 +119,9 @@
 ### PHP
 | Tool     | Version                           |
 | -------- | --------------------------------- |
-| PHP      | 7.1.33 7.2.34 7.3.29 7.4.22 8.0.9 |
+| PHP      | 7.1.33 7.2.34 7.3.29 7.4.22 8.0.19|
 | Composer | 2.1.5                             |
-| PHPUnit  | 8.5.19                            |
+| PHPUnit  | 8.5.19  8.0.19                    |
 ```
     Both Xdebug and PCOV extensions are installed, but only Xdebug is enabled.
 ```
