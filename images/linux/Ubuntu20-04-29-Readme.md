@@ -1,7 +1,7 @@
 | Announcements |
 |-|
 | [[Ubuntu] AWS CLI on Ubuntu18 image will be upgraded to V2 on June 20](https://github.com/actions/virtual-environments/issues/5679) |
-| [[all OSs] Android NDK 22 will be replaced in favor of 24, version 23 will be set as the default one on June, 6](https://github.com/actions/virtual-environments/issues/5595) |
+| [[all OSs] Android NDK 22 is replaced in favor of 24, version 23 is set as the default](https://github.com/actions/virtual-environments/issues/5595) |
 | [(Public Beta) Ubuntu 22.04 is now available](https://github.com/actions/virtual-environments/issues/5490) |
 ***
 # Ubuntu 20.04.4 LTS
@@ -260,24 +260,24 @@
 ### Web Servers
 | Name      | Version | ConfigFile                | ServiceStatus | ListenPort |
 | --------- | ------- | ------------------------- | ------------- | ---------- |
-| apache2   | 2.4.41  | /etc/apache2/apache2.conf | inactive      | 80         |
+| apache2   | 2.4.41  | /etc/apache2/apache2.conf | active        | 80         |
 | mono-xsp4 | 4.7.1   | /etc/default/mono-xsp4    | active        | 8084       |
-| nginx     | 1.18.0  | /etc/nginx/nginx.conf     | inactive      | 80         |
+| nginx     | 1.18.0  | /etc/nginx/nginx.conf     | active        | 80         |
 
 ### Android
 | Package Name               | Version                                                                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Android Command Line Tools | 7.0                                                                                                                                          |
 | Android Emulator           | 31.2.10                                                                                                                                      |
-| Android SDK Build-tools    | 32.0.0<br>31.0.0<br>30.0.0 30.0.1 30.0.2 30.0.3<br>29.0.0 29.0.1 29.0.2 29.0.3<br>28.0.0 28.0.1 28.0.2 28.0.3<br>27.0.0 27.0.1 27.0.2 27.0.3 |
-| Android SDK Platform-Tools | 33.0.2                                                                                                                                       |
-| Android SDK Platforms      | android-32 (rev 1)<br>android-31 (rev 1)<br>android-30 (rev 3)<br>android-29 (rev 5)<br>android-28 (rev 6)<br>android-27 (rev 3)             |
-| Android SDK Tools          | 26.1.1                                                                                                                                       |
-| Android Support Repository | 47.0.0                                                                                                                                       |
-| CMake                      | 3.10.2<br>3.18.1                                                                                                                             |
-| Google Play services       | 49                                                                                                                                           |
-| Google Repository          | 58                                                                                                                                           |
-| NDK                        | 21.4.7075529<br>23.2.8568313 (default)<br>24.0.8215888                                                                                       |
+| Android SDK Build-tools    | 32.0.0<br>31.0.0<br>30.0.0 30.0.1 30.0.2 30.0.3<br>29.0.0 29.0.1 29.0.2 29.0.3<br>28.0.0 28.0.1 28.0.2 28.0.3<br>27.0.0 27.0.1 27.0.2 27.0.3. |
+| Android SDK Platform-Tools | 33.0.2                                                                                                                                        |
+| Android SDK Platforms      | android-32 (rev 1)<br>android-31 (rev 1)<br>android-30 (rev 3)<br>android-29 (rev 5)<br>android-28 (rev 6)<br>android-27 (rev 3)         |
+| Android SDK Tools          | 26.1.1                                                                                                                                        |
+| Android Support Repository | 47.0.0                                                                                                                                        |
+| CMake                      | 3.10.2<br>3.18.1                                                                                                                              |
+| Google Play services       | 49                                                                                                                                            |
+| Google Repository          | 58                                                                                                                                            |
+| NDK                        | 21.4.7075529<br>23.2.8568313 (default)<br>24.0.8215888                                                                                        |
 | SDK Patch Applier v4       | 1                                                                                                                                            |
 
 #### Environment variables
@@ -332,7 +332,7 @@
 | fakeroot               | 1.24-1                            |
 | file                   | 1:5.38-4                          |
 | flex                   | 2.6.4-6.2                         |
-| fonts-noto-color-emoji | 0\~20200916-1\~ubuntu20.04.1      |
+| fonts-no-to-color-emoji| 0\~20200916-1\~ubuntu20.04.1      |
 | ftp                    | 0.17-34.1                         |
 | gnupg2                 | 2.2.19-3ubuntu2.1                 |
 | haveged                | 1.9.1-6ubuntu1                    |
