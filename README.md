@@ -1,3 +1,4 @@
+[![Linter](https://github.com/actions/virtual-environments/actions/workflows/linter.yml/badge.svg)](https://github.com/actions/virtual-environments/actions/workflows/linter.yml)
 # GitHub Actions Virtual Environments
 Repository contains the source used to create the [virtual environments](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners) for GitHub Actions hosted runners, as well as the VM images of [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) used for Azure Pipelines.
 To build a VM machine from this repo's source, see the [instructions](docs/create-image-and-azure-resources.md).
