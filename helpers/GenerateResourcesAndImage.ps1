@@ -1,7 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
 enum ImageType {
-    Windows2016 = 0
     Windows2019 = 1
     Windows2022 = 2
     Ubuntu1804 = 3
@@ -18,9 +17,6 @@ Function Get-PackerTemplatePath {
     )
 
     switch ($ImageType) {
-        ([ImageType]::Windows2016) {
-            $relativeTemplatePath = Join-Path "win" "windows2016.json"
-        }
         ([ImageType]::Windows2019) {
             $relativeTemplatePath = Join-Path "win" "windows2019.json"
         }
@@ -71,7 +67,7 @@ Function GenerateResourcesAndImage {
         .PARAMETER ImageGenerationRepositoryRoot
             The root path of the image generation repository source.
         .PARAMETER ImageType
-            The type of the image being generated. Valid options are: {"Windows2016", "Windows2019", "Windows2022", "Ubuntu1804", "Ubuntu2004"}.
+            The type of the image being generated. Valid options are: {"Windows2019", "Windows2022", "Ubuntu1804", "Ubuntu2004", "Ubuntu2204"}.
         .PARAMETER AzureLocation
             The location of the resources being created in Azure. For example "East US".
         .PARAMETER Force
@@ -88,6 +84,8 @@ Function GenerateResourcesAndImage {
         
         .PARAMETER AllowBlobPublicAccess
             The Azure storage account will be created with this option.
+        .PARAMETER OnError
+            Specify how packer handles an error during image creation.
         .EXAMPLE
             GenerateResourcesAndImage -SubscriptionId {YourSubscriptionId} -ResourceGroupName "shsamytest1" -ImageGenerationRepositoryRoot "C:\virtual-environments" -ImageType Ubuntu1804 -AzureLocation "East US"
     #>
@@ -118,6 +116,9 @@ Function GenerateResourcesAndImage {
         [bool] $AllowBlobPublicAccess = $False,
         [Parameter(Mandatory = $False)]
         [bool] $EnableHttpsTrafficOnly = $False,
+        [Parameter(Mandatory = $False)]
+        [ValidateSet("abort","ask","cleanup","run-cleanup-provisioner")]
+        [string] $OnError = "ask",
         [Parameter(Mandatory = $False)]
         [hashtable] $Tags
     )
@@ -281,7 +282,7 @@ Function GenerateResourcesAndImage {
             $builderScriptPath = $builderScriptPath_temp
         }
 
-        & $packerBinary build -on-error=ask `
+        & $packerBinary build -on-error="$($OnError)" `
             -var "client_id=$($spClientId)" `
             -var "client_secret=$($ServicePrincipalClientSecret)" `
             -var "subscription_id=$($SubscriptionId)" `
